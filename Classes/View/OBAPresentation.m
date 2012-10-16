@@ -1,4 +1,6 @@
 #import "OBAPresentation.h"
+#import "OBASituationsViewController.h"
+#import "OBASituationViewController.h"
 #import "OBASphericalGeometryLibrary.h"
 #import "UIDeviceExtensions.h"
 
@@ -125,7 +127,23 @@ static const float kStopForRouteAnnotationMinScaleDistance = 8000;
 	}
 	
 	return cell;	
-}	
+}
+
++ (void) showSituations:(NSArray*)situations withAppContext:(OBAApplicationContext*)appContext navigationController:(UINavigationController*)navigationController args:(NSDictionary*)args {
+	if( [situations count] == 1 ) {
+		OBASituationV2 * situation = [situations objectAtIndex:0];
+		OBASituationViewController * vc = [[OBASituationViewController alloc] initWithApplicationContext:appContext situation:situation];
+		vc.args = args;
+		[navigationController pushViewController:vc animated:TRUE];
+		[vc release];
+	}
+	else {
+		OBASituationsViewController * vc = [[OBASituationsViewController alloc] initWithApplicationContext:appContext situations:situations];
+		vc.args = args;
+		[navigationController pushViewController:vc animated:TRUE];
+		[vc release];
+	}
+}
 
 + (float) computeStopsForRouteAnnotationScaleFactor:(MKCoordinateRegion)region {
 	

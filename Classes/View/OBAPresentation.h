@@ -28,6 +28,8 @@
 
 + (UITableViewCell*) tableViewCellForServiceAlerts:(OBAServiceAlertsModel*)serviceAlerts tableView:(UITableView*)tableView;
 
++ (void) showSituations:(NSArray*)situations withAppContext:(OBAApplicationContext*)appContext navigationController:(UINavigationController*)navigationController args:(NSDictionary*)args;
+
 + (float) computeStopsForRouteAnnotationScaleFactor:(MKCoordinateRegion)region;
 										 
 @end

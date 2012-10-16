@@ -3,7 +3,7 @@
 #import "UIDeviceExtensions.h"
 #import "OBASearchController.h"
 #import "OBASphericalGeometryLibrary.h"
-#import "SBJSON/SBJson.h"
+#import "SBJson.h"
 
 
 static const float kSearchRadius = 400;
